@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #313338;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #2b2d31;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            font-size: 8px;
+            line-height: 1.2;
+            color: #5865f2;
+            text-align: center;
+            margin-bottom: 30px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        h1 {
+            color: #f2f3f5;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b5bac1;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #1e1f22;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #1e1f22;
+            color: #dbdee1;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #5865f2;
+        }
+
+        input[type="text"]::placeholder {
+            color: #4e5058;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.17s ease, color 0.17s ease;
+            color: white;
+        }
+
+        button:hover {
+            filter: brightness(1.1);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-bravery {
+            background: #9c84ef;
+        }
+
+        .btn-brilliance {
+            background: #f47b8a;
+        }
+
+        .btn-balance {
+            background: #45ddc0;
+        }
+
+        .btn-leave {
+            background: #4e5058;
+            grid-column: 1 / -1;
+        }
+
+        .btn-leave:hover {
+            background: #5d6269;
+        }
+
+        .status {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .status.success {
+            background-color: #2d7d46;
+            color: #ffffff;
+            display: block;
+        }
+
+        .status.error {
+            background-color: #d83c3e;
+            color: #ffffff;
+            display: block;
+        }
+
+        .house-info {
+            background: #1e1f22;
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #dbdee1;
+            border-left: 4px solid #5865f2;
+        }
+
+        .house-info p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .house-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .house-info strong {
+            color: #5865f2;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #1e1f22;
+            border-top: 3px solid #5865f2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-leave {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ascii-art">
+ _   _                   ____                       _ 
+| | | |_   _ _ __   ___ / ___|  __ _ _   _  __ _  __| |
+| |_| | | | | '_ \ / _ \ \___ \ / _` | | | |/ _` |/ _` |
+|  _  | |_| | |_) |  __/ ___) | (_| | |_| | (_| | (_| |
+|_| |_|\__, | .__/ \___|____/ \__, |\__,_|\__,_|\__,_|
+       |___/|_|                   |_|                    
+        </div>
+
+        <div class="input-group">
+            <label for="token">Discordトークン</label>
+            <input type="text" id="token" placeholder="ここにトークンを入力してください">
+        </div>
+
+        <div class="button-group">
+            <button class="btn-bravery" onclick="joinHouse(1)">
+                Bravery
+            </button>
+            <button class="btn-brilliance" onclick="joinHouse(2)">
+                Brilliance
+            </button>
+            <button class="btn-balance" onclick="joinHouse(3)">
+                Balance
+            </button>
+            <button class="btn-leave" onclick="leaveHouse()">
+                退室
+            </button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <script>
+        const houseNames = {
+            1: 'Bravery',
+            2: 'Brilliance',
+            3: 'Balance'
+        };
+
+        function showLoading() {
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('status').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+        }
+
+        function showStatus(message, isSuccess) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + (isSuccess ? 'success' : 'error');
+            hideLoading();
+        }
+
+        async function joinHouse(houseId) {
+            const token = document.getElementById('token').value.trim();
+            
+            if (!token) {
+                showStatus('トークンを入力してください', false);
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const response = await fetch('https://discord.com/api/v9/hypesquad/online', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': token
+                    },
+                    body: JSON.stringify({ house_id: houseId })
+                });
+
+                if (response.ok) {
+                    showStatus(`${houseNames[houseId]}に参加しました`, true);
+                } else {
+                    const errorText = await response.text();
+                    showStatus(`エラー: ${errorText}`, false);
+                }
+            } catch (error) {
+                showStatus(`接続エラー: ${error.message}`, false);
+            }
+        }
+
+        async function leaveHouse() {
+            const token = document.getElementById('token').value.trim();
+            
+            if (!token) {
+                showStatus('トークンを入力してください', false);
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const response = await fetch('https://discord.com/api/v9/hypesquad/online', {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': token
+                    }
+                });
+
+                if (response.ok || response.status === 204) {
+                    showStatus('HypeSquadから退室しました', true);
+                } else {
+                    const errorText = await response.text();
+                    showStatus(`エラー: ${errorText}`, false);
+                }
+            } catch (error) {
+                showStatus(`接続エラー: ${error.message}`, false);
+            }
+        }
+        document.getElementById('token').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
