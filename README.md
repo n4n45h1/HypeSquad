@@ -2,14 +2,15 @@
 
 DiscordのHypeSquadハウスに一瞬で参加・退室できるツール  
 PythonのCLI版とブラウザで使えるWeb版があるよ
+Web版:https://n4n45h1.github.io/HypeSquad/web/
 
-## HypeSquadって？
+## HypeSquadってなんぞや？
 
 - **Bravery (1)** - 紫のバッジ
 - **Brilliance (2)** - 赤のバッジ
 - **Balance (3)** - 青緑のバッジ
 
-今つけられない
+今つけられないです。
 
 ## 使い方
 
@@ -63,7 +64,7 @@ Web版は何もいらない
 5. 出てきた文字列がトークン（コピーして使う）
 
 
-## 📝 ファイル構成
+## ファイル構成
 
 ```
 .
