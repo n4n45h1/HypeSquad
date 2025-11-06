@@ -1,8 +1,8 @@
 # Discord HypeSquad Tool
 
 DiscordのHypeSquadハウスに一瞬で参加・退室できるツール  
-PythonのCLI版とブラウザで使えるWeb版があるよ
-Web版:https://n4n45h1.github.io/HypeSquad/web/
+PythonのCLI版と[ブラウザで使えるWeb版](https://n4n45h1.github.io/HypeSquad/web/)があるよ
+
 
 ## HypeSquadってなんぞや？
 
