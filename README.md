@@ -1,16 +1,16 @@
-# Discord HypeSquad Tool
+# Discord HypeSquad Badge Get
 
-DiscordのHypeSquadハウスに一瞬で参加・退室できるツール  
-PythonのCLI版と[ブラウザで使えるWeb版](https://n4n45h1.github.io/HypeSquad/web/)があるよ
+HypeSquadバッチを取得できるツール  
+PythonのCLI版と[ブラウザで使えるWeb版](https://n4n45h1.github.io/HypeSquad/web/)があります
 
 
 ## HypeSquadってなんぞや？
 
-- **Bravery (1)** - 紫のバッジ
-- **Brilliance (2)** - 赤のバッジ
-- **Balance (3)** - 青緑のバッジ
+- **Bravery (1)** - 紫のバッジ <img width="20" alt="bravery badge" src="https://i.imgur.com/1p3XXPq.png">
+- **Brilliance (2)** - 赤のバッジ <img width="20" alt="brilliance badge" src="https://i.imgur.com/T1PAb8K.png">
+- **Balance (3)** - 青緑のバッジ <img width="20" alt="balance badge" src="https://i.imgur.com/EchSusJ.png">
 
-今つけられないです。
+正規の方法ではこのバッチはつけられないです。2025年10月の中旬頃に配布が終了(？)されたらしいです。
 
 ## 使い方
 
@@ -26,20 +26,7 @@ python hypesquad.py
 
 ### Web版
 
-`web/index.html`をブラウザで開くだけ
-
-```bash
-# ファイルをそのまま開くか
-xdg-open web/index.html
-
-# サーバー立ち上げるなら
-cd web
-python -m http.server 8000
-# → http://localhost:8000
-```
-
-ブラウザでトークン入れてボタン押すだけ
-
+[ここ](https://n4n45h1.github.io/HypeSquad/web/)を開くだけ
 ## 必要なもの
 
 Python版だけrequestsが必要
@@ -48,7 +35,6 @@ Python版だけrequestsが必要
 pip install -r requirements.txt
 ```
 
-Web版は何もいらない
 
 ## トークンの取り方
 
@@ -58,11 +44,13 @@ Web版は何もいらない
 4. これを貼り付けて実行:
 
 ```js
-(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=>m?.exports?.default?.getToken!==void 0).exports.default.getToken()
+window.webpackChunkdiscord_app.push([[Symbol()],{},o=>{for(let e of Object.values(o.c))try{if(!e.exports||e.exports===window)continue;e.exports?.getToken&&(token=e.exports.getToken());for(let o in e.exports)e.exports?.[o]?.getToken&&"IntlMessagesProxy"!==e.exports[o][Symbol.toStringTag]&&(token=e.exports[o].getToken())}catch{}}]),window.webpackChunkdiscord_app.pop(),token;
 ```
 
 5. 出てきた文字列がトークン（コピーして使う）
-
+```
+'MTM2MDk4MDIwMjg4xxxxxxxxx.xxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxx'
+```
 
 ## ファイル構成
 
