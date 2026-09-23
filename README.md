@@ -13,7 +13,10 @@
 
 ## HypeSquadってなんぞや？
 
-Discordのプロフィールに付く、3種類のハウスバッジです。
+Discordのプロフィールに付く、3種類のバッジです。
+<p align=“center”>
+  <img width=“5” alt=“バッチ” src=https://i.imgur.com/VKCsQ2J.png”>
+</p>
 
 | ハウス | バッジ | 色 |
 |:---:|:---:|:---:|
@@ -23,7 +26,7 @@ Discordのプロフィールに付く、3種類のハウスバッジです。
 
 > ⚠️ 2025年10月中旬頃のDiscordアップデートで、ユーザーがHypeSquadに加入するための画面が削除されました。このツールは非公式のAPIを使うため、今後も動くことやバッジが表示されることは保証できません。
 
-[ハウスの詳しい説明はこちら（Discord公式）](https://support.discord.com/hc/ja/articles/360007553672-HypeSquad%E3%83%8F%E3%82%A6%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0)
+[Hypesquadの詳しい説明はこちら（Discord公式）](https://support.discord.com/hc/ja/articles/360007553672-HypeSquad%E3%83%8F%E3%82%A6%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0)
 
 ---
 
