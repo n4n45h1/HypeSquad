@@ -29,13 +29,13 @@ Discordのプロフィールに付く、3種類のハウスバッジです。
 
 ## 使い方
 
-### Web版 🌐
+### Web版 
 
 **[ここを開く](https://n4n45h1.github.io/HypeSquad/web/)** → 自分のトークンを入力 → 好きなハウスのボタンを押すだけ。退室ボタンもあります。入力したトークンはページに保存せず、操作後に消去します。
 
 ブラウザのCORS制限でDiscordへの通信がブロックされることがあります。そのときは下のPython版を試してください。
 
-### Python版 🐍
+### Python版 
 
 Python 3を用意して、リポジトリのフォルダで：
 
@@ -89,7 +89,5 @@ python hypesquad.py --house leave
 
 - [Qiita - BrushedNeonさんの記事](https://qiita.com/BrushedNeon/items/e8b65de96ff8b7eb5ee9)
 - [note - yuuuyugbpさんの記事](https://note.com/yuuuyugbp/n/nbd779e2b0510)
-
-ライセンスファイルはまだ置いていません。
 
 <p align="center">❤️ Made with Claude</p>
