@@ -21,7 +21,7 @@ Discordのプロフィールに付く、3種類のハウスバッジです。
 | **Brilliance (2)** | <img width="20" alt="Brillianceのバッジ" src="https://i.imgur.com/T1PAb8K.png"> | 赤 |
 | **Balance (3)** | <img width="20" alt="Balanceのバッジ" src="https://i.imgur.com/EchSusJ.png"> | 青緑 |
 
-> ⚠️ Discordの[公式バッジ案内](https://support.discord.com/hc/en-us/articles/360035962891-Profile-Badges-101)では、ハウスバッジは過去にクイズで取得できたものとして説明されています。このツールは非公式のAPIを使うため、今後も動くことやバッジが表示されることは保証できません。
+> ⚠️ 2025年10月中旬頃のDiscordアップデートで、ユーザーがHypeSquadに加入するための画面が削除されました。このツールは非公式のAPIを使うため、今後も動くことやバッジが表示されることは保証できません。
 
 [ハウスの詳しい説明はこちら（Discord公式）](https://support.discord.com/hc/ja/articles/360007553672-HypeSquad%E3%83%8F%E3%82%A6%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0)
 
