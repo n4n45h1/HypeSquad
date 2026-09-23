@@ -1,105 +1,61 @@
-# Discord HypeSquad Badge Get Tool
+# HypeSquad House Tool
 
-<p align="center">
-  <img width="400" alt="HypeSquad Banner" src="https://i.imgur.com/b3acpXM.png">
-</p>
+自分のDiscordアカウントのHypeSquadハウスに対して、参加・変更・退室のリクエストを送る非公式ツールです。Python CLI版と[Web版](https://n4n45h1.github.io/HypeSquad/web/)があります。
 
-<p align="center">
-  HypeSquadバッジを取得できるツールです<br>
-  PythonのCLI版と<a href="https://n4n45h1.github.io/HypeSquad/web/">ブラウザで使えるWeb版</a>があります
-</p>
+> [Discordの公式案内](https://support.discord.com/hc/en-us/articles/360035962891-Profile-Badges-101)では、HypeSquad Houseバッジは過去にクイズで取得できたものとして紹介されています。このツールが使うエンドポイントは公開の開発者向けAPIとして保証されていません。リクエストに成功してもバッジ表示は保証できません。通常のユーザーアカウントの自動操作については[Discordの案内](https://support.discord.com/hc/en-us/articles/115002192352-Automated-User-Accounts-Self-Bots)も確認してください。
 
----
+## ハウス
 
-## HypeSquadってなんぞや？
+| 操作 | CLIの指定 | 説明 |
+| --- | --- | --- |
+| Bravery | `bravery` | 勇気 |
+| Brilliance | `brilliance` | 才能 |
+| Balance | `balance` | 調和 |
+| 退室 | `leave` | 現在のハウスから退室 |
 
-| ハウス | バッジ | 色 |
-|:---:|:---:|:---:|
-| **Bravery (1)** | <img width="20" alt="bravery badge" src="https://i.imgur.com/1p3XXPq.png"> | 紫 |
-| **Brilliance (2)** | <img width="20" alt="brilliance badge" src="https://i.imgur.com/T1PAb8K.png"> | 赤 |
-| **Balance (3)** | <img width="20" alt="balance badge" src="https://i.imgur.com/EchSusJ.png"> | 青緑 |
+## Python版
 
-> ⚠️ **注意**: 2025年10月中旬頃のDiscordアップデートで、ユーザーがHypeSquadに加入するための画面が削除されました。正規の方法ではこのバッジはつけられません。このツールは**非公式の方法**でバッジを取得するものです。
-
-HypeSquadについての[詳細はこちら（Discord公式）](https://support.discord.com/hc/ja/articles/360007553672-HypeSquad%E3%83%8F%E3%82%A6%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0)
-
----
-
-## 使い方
-
-### Python版
+Python 3と`requests`が必要です。
 
 ```bash
+python -m pip install -r requirements.txt
 python hypesquad.py
 ```
 
-1. トークン入力（直接入力 or `token.txt` などのファイル名）
-2. 好きなハウスを選ぶ（1〜3）
-3. 退室したいなら 4
+メニューから選択後、トークンを入力します。入力した文字は画面に表示されません。先に操作を指定する場合は、たとえば`python hypesquad.py --house balance`です。`--house leave`で退室できます。`python hypesquad.py --help`で全オプションを確認できます。
 
-### Web版
+環境変数`DISCORD_TOKEN`または`--token-file /path/to/token.txt`も使用できます。環境変数やファイルに機密情報を残す場合は、共有端末・シェルの履歴・ファイルのアクセス権限に注意してください。コマンドラインの引数でトークンを渡す機能はありません。
 
- [こちらを開くだけ](https://n4n45h1.github.io/HypeSquad/web/)
+## Web版
 
----
+[Web版を開く](https://n4n45h1.github.io/HypeSquad/web/) → 自分のトークンを入力 → ハウスまたは退室を選択。送信後に入力欄を消去し、ブラウザ内のストレージにも保存しません。ページのコードは[`web/index.html`](web/index.html)で確認できます。
 
-## 必要なもの
+Web版はブラウザからDiscordに直接リクエストします。Discordがこのページのオリジンからのアクセスを許可しない場合、**CORS制限で動作しません**。GitHub PagesのURLで動作する保証はありません。通信に失敗する場合はPython版を試してください。第三者の「CORS回避プロキシ」にトークンを送らないでください。
 
-Python版のみ `requests` が必要です：
+## よくあるエラー
 
-```bash
-pip install -r requirements.txt
+| 表示 | 確認すること |
+| --- | --- |
+| 401 | トークンが無効・期限切れの可能性 |
+| 403 | Discord側が操作を拒否 |
+| 429 | リクエスト制限。時間をおいてから再試行 |
+| その他のHTTPエラー | APIの変更・提供終了などの可能性 |
+| Web版の通信エラー | CORS制限、ネットワーク、Discord側の状態。Python版でも確認 |
+
+トークンはアカウントへのアクセスに使える機密情報です。他人に見せたり、Issueやスクリーンショットに貼り付けたりしないでください。漏れた可能性がある場合はDiscordでパスワードを変更してください。
+
+## 構成
+
+```text
+hypesquad.py      Python CLI
+requirements.txt  Pythonの依存パッケージ
+web/index.html    静的Web版
+README.md         この説明
 ```
-
----
-
-## トークンの取り方
-
-1.  Discordを**ブラウザ**で開く
-2. `F12` でDevToolsを開く
-3. **Console（コンソール）** タブに移動
-4. 以下のコードを貼り付けて実行：
-
-```js
-window.webpackChunkdiscord_app.push([[Symbol()],{},o=>{for(let e of Object.values(o.c))try{if(!e. exports||e.exports===window)continue;e.exports?.getToken&&(token=e.exports.getToken());for(let o in e.exports)e.exports? .[o]?. getToken&&"IntlMessagesProxy"!==e.exports[o][Symbol.toStringTag]&&(token=e.exports[o].getToken())}catch{}}]),window.webpackChunkdiscord_app.pop(),token;
-```
-
-5. 出てきた文字列がトークン（コピーして使う）
-
-```
-'MTM2MDk4MDIwMjg4xxxxxxxxx.xxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxx'
-```
-
-> ⚠️ **警告**: トークンは絶対に他人に教えないでください！アカウントを乗っ取られる可能性があります。
-
----
-
-## ファイル構成
-
-```
-.
-├── hypesquad.py          # Python CLI版
-├── requirements. txt      # 必要なパッケージ
-├── web/
-│   └── index.html        # Web版（スタンドアロン）
-└── README.md             # これ
-```
-
----
 
 ## 参考
 
-- [Qiita - BrushedNeonさんの記事](https://qiita.com/BrushedNeon/items/e8b65de96ff8b7eb5ee9)
-- [Note - yuuuyugbpさんの記事](https://note.com/yuuuyugbp/n/nbd779e2b0510)
+- [Discord: Profile Badges 101](https://support.discord.com/hc/en-us/articles/360035962891-Profile-Badges-101)
+- [Discord: HypeSquadハウスの詳細](https://support.discord.com/hc/ja/articles/360007553672-HypeSquad%E3%83%8F%E3%82%A6%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0)
 
----
-
-## ライセンス
-
-好きに使ってね 
-
----
-
-<p align="center">
-  ❤️ Made with Claude
-</p>
+ライセンスは現時点で未設定です。再配布・改変の条件を明確にする場合は`LICENSE`を追加してください。
